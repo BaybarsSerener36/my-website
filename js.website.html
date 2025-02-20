@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechNova - Yenilikçi Teknoloji Çözümleri</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Temel reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
+    /* Header */
+    header {
+      width: 100%;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007BFF;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #007BFF;
+    }
+    /* Hero Bölümü */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #007BFF, #00C6FF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 20px;
+      margin-top: 80px; /* Header yüksekliği kadar boşluk */
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero .cta {
+      padding: 15px 30px;
+      font-size: 1rem;
+      background: white;
+      color: #007BFF;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .hero .cta:hover {
+      background: #007BFF;
+      color: white;
+    }
+    /* Bölüm Başlıkları */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #333;
+    }
+    /* Özellikler Bölümü */
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .feature {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .feature h3 {
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+    /* Genel Bölümler */
+    section {
+      padding: 80px 0;
+    }
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+    /* Responsive Tasarım */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Sabit Header -->
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">TechNova</div>
+        <div class="nav-links">
+          <a href="#home">Ana Sayfa</a>
+          <a href="#features">Özellikler</a>
+          <a href="#about">Hakkımızda</a>
+          <a href="#contact">İletişim</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Bölümü -->
+  <section class="hero" id="home">
+    <div class="container">
+      <h1>Yenilikçi Teknoloji Çözümleri</h1>
+      <p>İşinizi geleceğe taşıyacak modern ve etkili teknolojiler.</p>
+      <button class="cta">Daha Fazla Bilgi</button>
+    </div>
+  </section>
+
+  <!-- Özellikler Bölümü -->
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">Özellikler</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Güvenlik</h3>
+          <p>Veri güvenliğinizi en üst düzeyde sağlıyoruz.</p>
+        </div>
+        <div class="feature">
+          <h3>Hız</h3>
+          <p>Hızlı ve kesintisiz teknolojik çözümler sunuyoruz.</p>
+        </div>
+        <div class="feature">
+          <h3>İnovasyon</h3>
+          <p>Yaratıcı ve yenilikçi çözümler ile rakiplerinizin önünde olun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hakkımızda Bölümü -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Hakkımızda</h2>
+      <p style="text-align: center; max-width: 800px; margin: auto;">
+        TechNova, teknoloji alanında öncü, yenilikçi ve modern çözümler sunan bir şirkettir.
+        Amacımız, müşterilerimizin iş süreçlerini hızlandırmak ve dijital dönüşümde yanlarında yer almaktır.
+      </p>
+    </div>
+  </section>
+
+  <!-- İletişim Bölümü -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">İletişim</h2>
+      <p style="text-align: center;">
+        Bizimle iletişime geçmek için <a href="mailto:info@technova.com" style="color: #007BFF;">info@technova.com</a> adresine mail atabilirsiniz.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 TechNova. Tüm hakları saklıdır.</p>
+    </div>
+  </footer>
+
+  <!-- Basit JavaScript ile etkileşim: CTA butonuna tıklandığında "Hakkımızda" bölümüne kaydırma -->
+  <script>
+    document.querySelector('.cta').addEventListener('click', function () {
+      document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
