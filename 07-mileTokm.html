@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mile to Km and Feet Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        input {
+            width: 100px;
+            padding: 15px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        button {
+            margin: 15px;
+            padding: 8px 15px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px;
+        }
+
+        /* Sol üst köşedeki Ana Sayfa Butonu */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            color: #3498db;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Ana Sayfa Butonu -->
+    <a href="index.html" class="home-button">🏠 Ana Sayfa</a>
+
+    <div class="container">
+        <h2>Mile to Km and Feet Converter</h2>
+        <input type="number" id="mileInput" placeholder="Enter miles">
+        <button onclick="convertToKm()">Convert</button>
+        <label id="result">Kilometer:-   ,   Feet:-</label>
+    </div>
+
+    <script>
+        function convertToKm() {
+            let mileValue = document.getElementById("mileInput").value; // Kullanıcıdan mil değerini al
+            if (mileValue === "") {
+                document.getElementById("result").innerText = "Please enter a value.";
+                return;
+            }
+
+            let kmValue = mileToKm(mileValue); 
+            let feetValue = mileToFeet(mileValue);
+
+            document.getElementById("result").innerText = `Kilometer: ${kmValue.toFixed(2)} km , Feet : ${feetValue.toFixed(2)}`; 
+        }
+
+        function mileToKm(mile) {
+            return mile * 1.60934;
+        }
+
+        function mileToFeet(mile) {
+            return mile * 5280; 
+        }
+    </script>
+
+</body>
+</html>
