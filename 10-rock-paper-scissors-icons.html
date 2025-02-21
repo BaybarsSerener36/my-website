@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rock Paper Scissors</title>
+    <style>
+
+        .row {
+            display: flex;
+            justify-content: center; 
+            margin: 20px; 
+            gap: 20px;
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+        } 
+        
+        .result-box {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        body {
+            background-color: #007BFF;
+            font-family: Arial; 
+            margin: 0;
+            padding: 0;
+        }
+
+        .move-icon {
+            width: 80px;
+            height: 60px;
+            padding: 10px;
+        }
+        
+        .icon-buttons {
+            background-color: transparent;
+            display: flex;
+            justify-content: center; 
+            margin: 3px; 
+            gap: 120px;
+        }
+
+        button {
+            border-radius: 20%; 
+            border: none; 
+            width: 120px; 
+            height: 120px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            cursor: pointer;
+            background-color: #007BFF; 
+            transform : scale(0.9);
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #007BFF; 
+        }
+
+        .choice-icon {
+            width: 50px;  
+            height: auto;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Sol üst köşedeki "Ana Sayfa" butonu */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #007BFF;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .home-button:hover {
+            background-color: rgb(185, 203, 223);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Ana Sayfa Butonu -->
+    <a href="index.html" class="home-button">🏠 Ana Sayfa</a>
+
+    <div class="row">
+        <p>! Choose Wisely !</p>
+    </div>
+
+    <div class="icon-buttons">
+        <button onclick="playGame('rock')">
+            <img src="images/rock.jpg" class="move-icon">
+        </button>
+        
+        <button onclick="playGame('paper')"> 
+            <img src="images/paper.jpg" class="move-icon">
+        </button>
+
+        <button onclick="playGame('scissors')">
+            <img src="images/scissors.jpg" class="move-icon">
+        </button>
+    </div>
+
+    <div class="row">
+        <button onclick="ResetButtonClicked()">
+            <img src="images/reset.png" class="move-icon">
+        </button>
+    </div>
+
+    <p id="player-choice" class="result-box">Player Choice: <img id="player-image" src="" class="choice-icon" style="display: none;"></p>
+    <p id="computer-choice" class="result-box">Computer Choice: <img id="computer-image" src="" class="choice-icon" style="display: none;"></p>
+    <p id="game-result" class="result-box">Result: -</p>
+    <p id="score" class="result-box">Player: 0 | Computer: 0</p>
+
+    <script>
+        let computerMove = ""; 
+        let you = 0;  
+        let computer = 0; 
+
+        function loadScore() {
+            const savedScore = JSON.parse(localStorage.getItem("score"));
+            if (savedScore) {
+                you = savedScore.you;
+                computer = savedScore.computer;
+            }
+            updateScore();
+        }
+
+        function computerchoices() {
+            const choices = ['rock', 'paper', 'scissors'];
+            computerMove = choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function playGame(playerMove) {
+            computerchoices();
+        
+            let resultText = "";
+        
+            if (playerMove === computerMove) {
+                resultText = "Tie!";
+            } else if (
+                (playerMove === "rock" && computerMove === "scissors") ||
+                (playerMove === "paper" && computerMove === "rock") ||
+                (playerMove === "scissors" && computerMove === "paper")
+            ) {
+                resultText = "You Win!";
+                you += 1;
+            } else {
+                resultText = "You Lose!";
+                computer += 1;
+            }
+        
+            const playerImageSrc = `images/${playerMove}.jpg`;
+            const computerImageSrc = `images/${computerMove}.jpg`;
+
+            const playerImageElement = document.getElementById("player-image");
+            playerImageElement.src = playerImageSrc;
+            playerImageElement.style.display = "inline";
+            
+            const computerImageElement = document.getElementById("computer-image");
+            computerImageElement.src = computerImageSrc;
+            computerImageElement.style.display = "inline";
+
+            document.getElementById("game-result").innerText = "Result: " + resultText;
+            updateScore();
+        }
+        
+        function updateScore() {
+            document.getElementById("score").innerText = "Player: " + you + " | Computer: " + computer;
+            localStorage.setItem("score", JSON.stringify({ you, computer }));
+        }
+
+        function removestyle(){
+            document.getElementById("player-image").src = "";
+            document.getElementById("player-image").style.display = "none";
+            document.getElementById("computer-image").src = "";
+            document.getElementById("computer-image").style.display = "none";
+        }
+        
+        function ResetButtonClicked(){
+            you = 0;
+            computer = 0;
+            updateScore();
+            removestyle();
+            localStorage.removeItem("score");
+        }
+
+        loadScore();
+    </script>
+
+</body>
+</html>
