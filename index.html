@@ -74,11 +74,15 @@
     .hero h1 {
       font-size: 3rem;
       margin-bottom: 20px;
+      color: black; /* Siyah renk */
     }
+
     .hero p {
       font-size: 1.2rem;
       margin-bottom: 30px;
+      color: black; /* Siyah renk */
     }
+
     .hero .cta {
       padding: 15px 30px;
       font-size: 1rem;
@@ -101,6 +105,7 @@
       font-weight: 700;
       color: #333;
     }
+    
     /* Özellikler Bölümü */
     .features {
       display: flex;
@@ -151,6 +156,59 @@
         font-size: 1rem;
       }
     }
+
+    /* Hero Bölümü */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Hero bölümü tam ekran yüksekliğinde olacak */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 0 20px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Video Arka Planı */
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Hero İçeriği */
+.hero .container {
+  position: relative;
+  z-index: 2;
+  color: black; /* Yazı rengini siyah yaptık */
+}
+
+/* CTA Butonu */
+.hero .cta {
+  padding: 15px 30px;
+  font-size: 1rem;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.hero .cta:hover {
+  background: #007BFF;
+  color: white;
+}
+
+
   </style>
 </head>
 <body>
@@ -170,13 +228,20 @@
   </header>
 
   <!-- Hero Bölümü -->
-  <section class="hero" id="home">
-    <div class="container">
-      <h1>Yenilikçi Teknoloji Çözümleri</h1>
-      <p>İşinizi geleceğe taşıyacak modern ve etkili teknolojiler.</p>
-      <button class="cta">Daha Fazla Bilgi</button>
-    </div>
-  </section>
+<section class="hero" id="home">
+  <!-- Video Arka Planı -->
+  <video autoplay muted loop class="hero-video">
+      <source src="images/robot.mp4" type="video/mp4">
+      Tarayıcınız bu videoyu desteklemiyor.
+  </video>
+
+  <!-- İçerik -->
+  <div class="container">
+    <h1>Yenilikçi Teknoloji Çözümleri</h1>
+    <button class="cta">Daha Fazla Bilgi</button>
+  </div>
+</section>
+
 
   <!-- Özellikler Bölümü -->
   <section id="features">
@@ -246,8 +311,6 @@
         transition: background 0.3s ease;">
         Mile Converter
     </a>
-
-
 
   </div>
 
